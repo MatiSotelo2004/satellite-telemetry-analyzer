@@ -16,11 +16,10 @@ Este proyecto consiste en el desarrollo de una solución para procesar y analiza
 
 #### Parte 1: Procesamiento de Archivos Binarios
 
-**Archivo de entrada:** `HKTMT.bin` (aprox. 4000 bytes)
+**Archivo de entrada:** `HKTMT.bin`
 - Contiene captura de datos de telemetría satelital
 - Estructura de registros/paquetes de 4000 bytes cada uno
 - Información de posición en bytes para volcado de datos
-- Tabla de comandos CDH (Command and Data Handling)
 
 **Características del archivo:**
 - Registros con cantidad desconocida de paquetes
@@ -46,7 +45,6 @@ Este proyecto consiste en el desarrollo de una solución para procesar y analiza
 
 1. **Gráfico de voltaje vs tiempo** mostrando:
    - Variaciones de voltaje a lo largo del tiempo
-   - Identificación clara de períodos de eclipse
    - Valores entre 31.5v y 32v aproximadamente
 
 2. **Análisis de datos CDH:**

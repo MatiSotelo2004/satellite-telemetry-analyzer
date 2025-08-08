@@ -9,11 +9,13 @@ int main() {
     float PCS_value;
     time_t CDH_value;
 
-    //Abre los archivo
+    //Abre los archivos
     in_telemetry = fopen("HKTMST.bin", "rb"); 
     out_telemetry = fopen("output.txt", "w");
-    if (!in_telemetry){
-        printf("ERROR - No se pudo abrir el archivo");
+    if (!in_telemetry || !out_telemetry) { //Si no se pudo abrir alguno de los archivos
+        printf("ERROR - No se pudo abrir los archivos");
+        fclose(in_telemetry);
+        fclose(out_telemetry);
         return 1;
     }
     //Obtiene el tam. del archivo
@@ -21,6 +23,8 @@ int main() {
     size_file = ftell(in_telemetry);
     if(size_file%4000 != 0){ //Si no es divisible por 4000, arroja un error
         printf("ERROR - Tam. Invalido");
+        fclose(in_telemetry);
+        fclose(out_telemetry);
         return 1;
     }
     fseek(in_telemetry, 0, SEEK_SET); //Vuelve a posicionar el cursor al inicio
@@ -36,13 +40,13 @@ int main() {
         fread(&raw_CDH, sizeof(int), 1, in_telemetry);
         CDH_value = obtener_CDH(raw_CDH); //Llama a la funcion para obtener el valor de CDH
         
-        fprintf(out_telemetry, "PCS: %f\t CDH: %s\n", PCS_value, ctime(&CDH_value)); //Escribe el valor de PCS en el archivo de salida
+        fprintf(out_telemetry, "PCS: %f\t CDH: %s\n", PCS_value, ctime(&CDH_value)); //Escribe el valor de PCS y el de CDH en el archivo de salida
         
     }
 
-
-
-
+    //Cierra los archivos
+    fclose(in_telemetry);
+    fclose(out_telemetry);
 
 
     return 0;

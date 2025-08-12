@@ -35,3 +35,13 @@ time_t obtener_CDH(unsigned int raw) {
     // Asumiendo que el valor de raw es un timestamp en segundos desde epoch
     return (time_t)(raw+time_offset); // Convierte a time_t sumando el offset
 }
+
+int comparar_registros(const void *a, const void*b){ //Funcion de comparar para Qsort
+    satelite_struct *registro1= (satelite_struct *)a , *registro2=(satelite_struct *)b;
+    if(registro1->CDH_value > registro2->CDH_value)
+        return 1;
+    if(registro1->CDH_value < registro2->CDH_value)
+        return -1;
+
+    return 0;
+}

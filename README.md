@@ -1,7 +1,7 @@
 # 🛰️ Trabajo Práctico - Tópicos de Programación
 ## Análisis de Datos de Telemetría Satelital
 
-### 📋 Descripción del Proyecto
+### 📋 Descripción del proyecto
 
 Este proyecto consiste en el desarrollo de una solución para procesar y analizar datos de telemetría satelital. El objetivo principal es obtener valores medios de voltaje aislados y generar gráficos a partir de archivos binarios que contienen información de sensores satelitales.
 
